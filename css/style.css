@@ -1,0 +1,394 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", serif;
+    list-style: none;
+}
+
+/* Общие классы */
+
+.flex-direction-column-gap-16 {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+h2 {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24.2px;
+    color: #1d1b1e;
+}
+
+input[type='text']::placeholder,
+input[type='date']::placeholder {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.03em;
+    color: #49454f;
+}
+
+/* ----------- */
+
+body {
+    height: 100%;
+    min-height: 100vh;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-todo {
+    width: 428px;
+    background-color: #fffbff;
+    border-radius: 8px;
+    padding: 24px 16px 16px 16px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+}
+
+/* Работа с блоком header */
+
+.header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.header-info p {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 18.15px;
+    color: #1d1b1e;
+}
+
+.search-box {
+    display: flex;
+}
+
+.search-box input,
+.search-box button {
+    background-color: rgba(29, 27, 32, 0.08);
+    border: none;
+    outline: none;
+}
+
+.search-box input {
+    flex-basis: 85%;
+    padding: 12px 0px 12px 20px;
+    border-top-left-radius: 28px;
+    border-bottom-left-radius: 28px;
+}
+
+.search-box button {
+    flex-basis: 15%;
+    padding-right: 20px;
+    border-top-right-radius: 28px;
+    border-bottom-right-radius: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+/* Работа с блоком todo-list */
+
+.tabs {
+    display: flex;
+    padding: 4px 0px;
+}
+
+.tab {
+    flex: 1;
+    background-color: #fffbff;
+    outline: none;
+    border: 1px solid #79747e;
+    padding: 10px;
+
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 143%;
+    letter-spacing: 0.01em;
+    text-align: center;
+    color: #1d192b;
+
+    transition: all 400ms;
+}
+
+.tab:first-child {
+    border-radius: 100px 0 0 100px;
+    border-right: none;
+}
+
+.tab:last-child {
+    border-radius: 0 100px 100px 0;
+    border-left: none;
+}
+
+.tab span {
+    display: none;
+}
+
+.tab.active {
+    background-color: #e8def8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+
+.tab.active span {
+    display: inline;
+}
+
+.tab:hover {
+    background-color: #d0bcff;
+    color: #fff;
+}
+
+#titleTodoList{
+    display: none;
+}
+
+/* Стили для списка задач */
+
+#tasks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tack-list {
+    border-radius: 16px;
+    padding: 8px 8px 8px 16px;
+    background-color: rgba(103, 80, 164, 0.05);
+    transition: all 400ms;
+}
+
+.tack-list:hover {
+    background-color: #e8def8;
+}
+
+.custom-checkbox {
+    display: flex;
+    gap: 8px;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    transform: scale(1.5);
+}
+
+.custom-checkbox input[type="checkbox"]:checked {
+    accent-color: #d0bcff;
+}
+
+.task-data {
+    font-weight: 400;
+    font-size: 14px;
+    color: #1d1b1e;
+}
+
+.task-description {
+    font-weight: 400;
+    font-size: 16px;
+    color: #1d1b1e;
+}
+
+/* Работа с блоком footer */
+
+.footer {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-task-button {
+    border-radius: 16px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+    background-color: #ebdef7;
+    border: none;
+    outline: none;
+    padding: 19px;
+    cursor: pointer;
+    transition: all 400ms;
+}
+
+.add-task-button:hover {
+    background-color: #d0bcff;
+}
+
+/* Работа с модальным окном */
+
+.modal {
+    display: none;
+    position: fixed;
+    justify-content: center;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.wraper {
+    display: none;
+    height: 100%;
+    width: 428px;
+    justify-content: center;
+    align-items: end;
+}
+
+.new-entry {
+    width: 100%;
+
+    padding: 0px 16px 16px 16px;
+    background-color: #f7f2fa;
+    border-radius: 28px 28px 0 0;
+}
+
+.new-entry hr {
+    margin: 16px auto;
+    width: 32px;
+    height: 4px;
+    border-radius: 100px;
+    background-color: #79747e;
+    border: none;
+}
+
+#addNewEntryForm {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+}
+
+.data-entry input {
+    border-radius: 4px;
+    outline: none;
+    padding: 16px;
+    background-color: #f7f2fa;
+    border: 1px solid #79747e;
+    transition: all 400ms;
+}
+
+.data-entry input:hover {
+    border: 1px solid #6750a4;
+    background-color: #d0bcff;
+}
+
+.data-entry input:focus {
+    border: 1px solid #6750a4;
+    background-color: #e2d8fa;
+}
+
+/* Оформление переключателя */
+
+.switch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: 0.03em;
+    color: #1d1b1e;
+}
+
+.switch input {
+    display: none;
+}
+
+.slider {
+    position: relative;
+    width: 52px;
+    height: 32px;
+    background-color: #ccc;
+    border-radius: 34px;
+    cursor: pointer;
+    transition: 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Круг в середине слайдера */
+.slider::before {
+    position: absolute;
+    content: "";
+    height: 21px;
+    width: 21px;
+    left: 5px;
+    bottom: 5px;
+    background-color: white;
+    border-radius: 50%;
+    transition: 0.4s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slider:hover {
+    background-color: #d0bcff;
+}
+
+/* Иконка галочки */
+.checkmark {
+    height: 18px;
+    width: 18px;
+    stroke: black;
+    display: none;
+    transition: 1.2s;
+}
+
+input:checked+.slider {
+    background-color: #6a4dcb;
+}
+
+input:checked+.slider:before {
+    transform: translateX(22px);
+}
+
+input:checked+.slider .checkmark {
+    display: block;
+    transform: translateX(12px);
+}
+
+/* --- Оформление переключателя --- */
+
+.buttons-form {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.buttons-form button {
+    padding: 10px 24px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 143%;
+    letter-spacing: 0.01em;
+    text-align: center;
+    border-radius: 100px;
+    outline: none;
+    cursor: pointer;
+    transition: all 400ms;
+}
+
+.buttons-form button[type='submit'] {
+    color: #fff;
+    background-color: #6750a4;
+    border: 1px solid #6750a4;
+}
+
+.buttons-form button[type='reset'] {
+    color: #6750a4;
+    border: 1px solid #79747e;
+    background-color: #f7f2fa;
+}
+
+.buttons-form button:hover {
+    background-color: #d0bcff;
+    color: #fff;
+}

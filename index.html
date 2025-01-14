@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="app-todo flex-direction-column-gap-16">
+
+        <div class="header flex-direction-column-gap-16">
+            <div class="header-info">
+                <h2>Среда</h2>
+                <p>3 января</p>
+            </div>
+            <div class="search-box">
+                <input type="text" id="search" placeholder="Поиск">
+                <button id="searchBtn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M14.76 13.27L20.49 19L19 20.49L13.27 14.76C12.2 15.53 10.91 16 9.5 16C5.91 16 3 13.09 3 9.5C3 5.91 5.91 3 9.5 3C13.09 3 16 5.91 16 9.5C16 10.91 15.53 12.2 14.76 13.27ZM9.5 5C7.01 5 5 7.01 5 9.5C5 11.99 7.01 14 9.5 14C11.99 14 14 11.99 14 9.5C14 7.01 11.99 5 9.5 5Z" fill="#49454F" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="todo-list flex-direction-column-gap-16">
+            <h2 id="titleTodoList">Список дел</h2>
+            <div id="tabsTasks" class="tabs">
+                <button id="allTasks" class="tab active">
+                    <span>
+                        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.08334 12.1275L3.95584 9L2.89084 10.0575L7.08334 14.25L16.0833 5.25L15.0258 4.1925L7.08334 12.1275Z" fill="#1D192B" />
+                        </svg>
+                    </span>Все</button>
+                <button id="activeTasks" class="tab">
+                    <span>
+                        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.08334 12.1275L3.95584 9L2.89084 10.0575L7.08334 14.25L16.0833 5.25L15.0258 4.1925L7.08334 12.1275Z" fill="#1D192B" />
+                        </svg>
+                    </span>Активные</button>
+                <button id="completedTasks" class="tab">
+                    <span>
+                        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M7.08334 12.1275L3.95584 9L2.89084 10.0575L7.08334 14.25L16.0833 5.25L15.0258 4.1925L7.08334 12.1275Z" fill="#1D192B" />
+                        </svg>
+                    </span>Завершенные</button>
+            </div>
+            <ul id="tasks"></ul>
+        </div>
+
+        <div class="footer">
+            <button class="add-task-button">
+                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M16.06 0.590005L17.41 1.94C18.2 2.72 18.2 3.99 17.41 4.77L4.18 18H0V13.82L10.4 3.41L13.23 0.590005C14.01 -0.189995 15.28 -0.189995 16.06 0.590005ZM2 16L3.41 16.06L13.23 6.23L11.82 4.82L2 14.64V16Z" fill="#1F182A" />
+                </svg>
+            </button>
+        </div>
+
+        <div id="modalWindow" class="modal">
+            <div id="wraper" class="wraper">
+                <div class="new-entry flex-direction-column-gap-16">
+                    <hr>
+                    <form id="addNewEntryForm">
+                        <div class="data-entry flex-direction-column-gap-16">
+                            <input type="text" id="descriptionEntry" placeholder="Описание">
+                            <input type="datetime-local" id="dataEntry" placeholder="Дата">
+                            <label class="switch">
+                                Напомнить мне
+                                <input type="checkbox" id="reminder">
+                                <span class="slider">
+                                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <polyline points="20 6 9 17 4 12"></polyline>
+                                    </svg>
+                                </span>
+                            </label>
+                        </div>
+                        <div class="buttons-form">
+                            <button type="submit">Добавить</button>
+                            <button type="reset">Очистить</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+
+
+    <script src="main.js"></script>
+</body>
+
+</html>
