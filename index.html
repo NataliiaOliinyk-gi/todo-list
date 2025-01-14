@@ -62,30 +62,28 @@
             </button>
         </div>
 
-        <div id="modalWindow" class="modal">
-            <div id="wraper" class="wraper">
-                <div class="new-entry flex-direction-column-gap-16">
-                    <hr>
-                    <form id="addNewEntryForm">
-                        <div class="data-entry flex-direction-column-gap-16">
-                            <input type="text" id="descriptionEntry" placeholder="Описание">
-                            <input type="datetime-local" id="dataEntry" placeholder="Дата">
-                            <label class="switch">
-                                Напомнить мне
-                                <input type="checkbox" id="reminder">
-                                <span class="slider">
-                                    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                        <polyline points="20 6 9 17 4 12"></polyline>
-                                    </svg>
-                                </span>
-                            </label>
-                        </div>
-                        <div class="buttons-form">
-                            <button type="submit">Добавить</button>
-                            <button type="reset">Очистить</button>
-                        </div>
-                    </form>
-                </div>
+        <div id="modalWindow" class="modal hidden">
+            <div class="new-entry flex-direction-column-gap-16">
+                <hr>
+                <form id="addNewEntryForm">
+                    <div class="data-entry flex-direction-column-gap-16">
+                        <input type="text" id="descriptionEntry" placeholder="Описание">
+                        <input type="datetime-local" id="dataEntry" placeholder="Дата">
+                        <label class="switch">
+                            Напомнить мне
+                            <input type="checkbox" id="reminder">
+                            <span class="slider">
+                                <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                            </span>
+                        </label>
+                    </div>
+                    <div class="buttons-form">
+                        <button type="submit">Добавить</button>
+                        <button type="reset">Отмена</button>
+                    </div>
+                </form>
             </div>
             
         </div>

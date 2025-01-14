@@ -42,6 +42,9 @@ body {
 }
 
 .app-todo {
+    position: relative;
+    /* родительский элемент для модального окна */
+
     width: 428px;
     background-color: #fffbff;
     border-radius: 8px;
@@ -67,12 +70,17 @@ body {
 .search-box {
     display: flex;
 }
+.search-box:hover {
+    background-color: #e8def8;
+    border-radius: 28px;
+}
 
 .search-box input,
 .search-box button {
     background-color: rgba(29, 27, 32, 0.08);
     border: none;
     outline: none;
+    transition: all 400ms;
 }
 
 .search-box input {
@@ -148,7 +156,7 @@ body {
     color: #fff;
 }
 
-#titleTodoList{
+#titleTodoList {
     display: none;
 }
 
@@ -158,6 +166,11 @@ body {
     display: flex;
     flex-direction: column;
     gap: 12px;
+
+    /* Полоса прокрутки для списка задач */
+    height: 400px;
+    max-height: 400px;
+    overflow-y: auto;
 }
 
 .tack-list {
@@ -221,31 +234,39 @@ body {
 /* Работа с модальным окном */
 
 .modal {
-    display: none;
-    position: fixed;
-    justify-content: center;
-
+    position: absolute;
     top: 0;
+    bottom: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.32);
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
 }
 
-.wraper {
-    display: none;
-    height: 100%;
-    width: 428px;
-    justify-content: center;
-    align-items: end;
+.modal.active {
+    opacity: 1;
+    visibility: visible;
 }
 
 .new-entry {
-    width: 100%;
-
     padding: 0px 16px 16px 16px;
     background-color: #f7f2fa;
     border-radius: 28px 28px 0 0;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: 0.5s;
+}
+
+.new-entry.active {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .new-entry hr {

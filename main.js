@@ -11,7 +11,6 @@ function getCurrentDate() {
         month,
     }
 }
-console.log(getCurrentDate());
 
 function displayCurrentDate(currentDate) {
     const weekDay = document.querySelector('.header-info h2');
@@ -20,9 +19,6 @@ function displayCurrentDate(currentDate) {
     monthAndDay.textContent = `${currentDate.day} ${currentDate.month}`;
 }
 
-startApp();
-
-
 function startApp() {
     // Показываем текущую дату
     displayCurrentDate(getCurrentDate());
@@ -30,17 +26,19 @@ function startApp() {
     // Подтягиваем элементы DOM
     const tasksList = document.getElementById('tasks'); //Список задач (ul)
     const form = document.getElementById('addNewEntryForm'); // Форма добавления новой задачи
+    const tabsTasks = document.getElementById('tabsTasks'); // Контейнер для вкладки задач
     const allTasksTab = document.getElementById('allTasks'); // Вкладка "Все задачи"
     const activeTasksTab = document.getElementById('activeTasks'); // Вкладка "Активные задачи"
     const completedTasksTab = document.getElementById('completedTasks'); // Вкладка "Выполненные задачи"
     const addTaskButton = document.querySelector('.add-task-button'); // Кнопка добавления новой задачи
     const modalWindow = document.getElementById('modalWindow'); // Модальное окно
-    const modalwraper = document.getElementById('wraper'); // wraper для модального окна
+    const modalNewEntry = document.querySelector('.new-entry'); // Контейнер для списка задач
     const search = document.getElementById('search'); // Поиск
+    const searchBtn = document.getElementById('searchBtn'); // Кнопка поиска "Лупа"
     const titleTodoList = document.getElementById('titleTodoList'); // Заголовок "Список дел"
-    const tabsTasks = document.getElementById('tabsTasks'); // Вкладки задач
+    
 
-    // Инициализировать массив задач из localStorage
+    // Инициализация массив задач из localStorage
     const tasks = getTasksFromLocalStorage();
     let currentTasks = [];
 
@@ -136,7 +134,7 @@ function startApp() {
 
     }
 
-    // Обрабатываем событие отправки формы для добавления новой задачи
+    // Обработчик событие отправки формы для добавления новой задачи
     form.addEventListener('submit', event => {
         event.preventDefault();
 
@@ -153,7 +151,7 @@ function startApp() {
         }
     });
 
-    // Обработка изменения состояния задачи
+    // Обработчик изменения состояния задачи
     tasksList.addEventListener('change', event => {
         if (event.target.matches('input[type="checkbox"]')) {
             const index = event.target.getAttribute('data-index');
@@ -171,17 +169,17 @@ function startApp() {
         renderTasks(loadAndSetTab());
     }
 
-    // Обрабатываем переключение вкладки "Все задачи"
+    // Обработчик переключение вкладки "Все задачи"
     allTasksTab.addEventListener('click', () => {
         handlingTabTask('all', allTasksTab);
     })
 
-    // Обрабатываем переключение вкладки "Активные задачи"
+    // Обработчик переключение вкладки "Активные задачи"
     activeTasksTab.addEventListener('click', () => {
         handlingTabTask('active', activeTasksTab);
     })
 
-    // Обрабатываем переключение вкладки "Завершенные задачи"
+    // Обработчик переключение вкладки "Завершенные задачи"
     completedTasksTab.addEventListener('click', () => {
         handlingTabTask('completed', completedTasksTab);
     })
@@ -211,33 +209,44 @@ function startApp() {
         return state;
     }
 
-    //Обрабатываем событие для добавления новой задачи
+    // Обработчик события для добавления новой задачи
     addTaskButton.addEventListener('click', () => {
         visibilityOnModalWindow();
-        modalWindow.scrollIntoView({ behavior: 'smooth' });
     });
 
     // Функция для включения видимости модального окна
     function visibilityOnModalWindow() {
-        modalWindow.style.display = "flex";
-        modalwraper.style.display = "flex";
+        modalWindow.classList.add('active');
+        modalNewEntry.classList.add('active');
         titleTodoList.style.display = "block";
         tabsTasks.style.display = "none";
     }
 
     // Функция для выключения видимости модального окна
     function visibilityOffModalWindow() {
-        modalWindow.style.display = "none";
-        modalwraper.style.display = "none";
+        modalWindow.classList.remove('active');
+        modalNewEntry.classList.remove('active');
         titleTodoList.style.display = "none";
         tabsTasks.style.display = "flex";
     }
 
-    // Закрытие модального окна при клике вне добавления новой задачи
+    // Обработчик закрытия модального окна при клике вне добавления новой задачи
     modalWindow.addEventListener("click", event => {
         if (event.target === modalWindow) {
             visibilityOffModalWindow();
         }
+    });
+
+    //Обработчик закрытия модального окна кнопкой "Отмена"
+    document.querySelector('button[type="reset"]').addEventListener('click', () => {
+        visibilityOffModalWindow();
+    });
+
+    //Обработчик закрытия модального окна кнопкой 'Escape'
+    document.addEventListener('keydown', (event) => {
+        if(event.key === 'Escape') {
+            visibilityOffModalWindow();
+        };
     });
 
     // Функция для вывода даты и времени задачи на экран
@@ -246,23 +255,31 @@ function startApp() {
 
         const date = new Date(inputDate);
 
-        const day = date.getDate(); // День місяця
-        const month = months[date.getMonth()]; // Назва місяця
-        const hours = String(date.getHours()).padStart(2, "0"); // Години
-        const minutes = String(date.getMinutes()).padStart(2, "0"); // Хвилини
+        const day = date.getDate(); // день
+        const month = months[date.getMonth()]; // месяц
+        const hours = String(date.getHours()).padStart(2, "0"); // часы
+        const minutes = String(date.getMinutes()).padStart(2, "0"); // минуты
         const formattedDate = `${day} ${month}, ${hours}:${minutes}`;
 
         return formattedDate;
     }
 
-    // Обрабатываем событие поиска
+    // Обработчик событие поиска
     search.addEventListener('input', () => {
         const searchInput = search.value;
         const state = loadAndSetTab();
         renderTasks(state, searchInput);
     });
 
+    // Обработчик событие нажатия на кнопку "Лупа"
+    // очищает строку поиска
+    searchBtn.addEventListener('click', () => {
+        search.value = '';
+    })
+
 
 
     renderTasks(loadAndSetTab());
 }
+
+startApp();
