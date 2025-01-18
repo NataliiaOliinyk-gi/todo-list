@@ -1,3 +1,6 @@
+// localStorage.removeItem('tasks');
+// localStorage.removeItem('state');
+
 function getCurrentDate() {
     const weekDays = ["Воскресенье", "Понедельник", "Вторник", "Среда", "Четверг", "Пятница", "Суббота"];
     const months = ["Января", "Февраля", "Марта", "Апреля", "Мая", "Июня", "Июля", "Августа", "Сентября", "Октября", "Ноября", "Декабря"];
