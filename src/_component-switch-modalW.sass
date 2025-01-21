@@ -4,9 +4,8 @@
 @use 'mixins'
 
 .switch
-    display: flex
+    @include mixins.flex-direction-centr()
     justify-content: space-between
-    align-items: center
     @include mixins.text-parametrs(400, 16px, 150%)
     letter-spacing: 0.03em
     
@@ -14,14 +13,14 @@
         display: none
 
 .slider
+    @include mixins.cursor-pointer()
+    @include mixins.transition()
+    @include mixins.flex-direction-centr()
     position: relative
     width: 52px
     height: 32px
     background-color: variables.$bg-color-light-grey
     border-radius: 34px
-    @include mixins.cursor-pointer()
-    @include mixins.transition()
-    @include mixins.flex-direction-centr()
     &:hover
         background-color: variables.$bg-color-violet
     &::before     // Круг в середине слайдера

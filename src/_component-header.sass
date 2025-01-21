@@ -3,6 +3,12 @@
 @use 'variables'
 @use 'mixins'
 
+
+%search-box-shared
+    background-color: variables.$bg-color-search-box
+    @include mixins.transition()
+
+
 .header
     @include mixins.flex-direction-column-gap-16()
 
@@ -20,27 +26,23 @@
         background-color: variables.$bg-color-grey-light-violet
         border-radius: variables.$border-radius-size
 
-%search-box-shared
-    background-color: variables.$bg-color-search-box
-    @include mixins.transition()
+    input
+        @include mixins.button-none-style()
+        @extend %search-box-shared
+        flex-basis: 85%
+        padding: 12px 0px 12px 20px
+        border-top-left-radius: variables.$border-radius-size
+        border-bottom-left-radius: variables.$border-radius-size
 
-
-.search-box input
-    @include mixins.button-none-style()
-    @extend %search-box-shared
-    flex-basis: 85%
-    padding: 12px 0px 12px 20px
-    border-top-left-radius: variables.$border-radius-size
-    border-bottom-left-radius: variables.$border-radius-size
-
-.search-box button
-    @include mixins.button-none-style()
-    @extend %search-box-shared
-    @include mixins.cursor-pointer()
-    flex-basis: 15%
-    padding-right: 20px
-    border-top-right-radius: variables.$border-radius-size
-    border-bottom-right-radius: variables.$border-radius-size
-    @include mixins.flex-direction-centr()
+    button
+        @include mixins.flex-direction-centr()
+        @include mixins.button-none-style()
+        @include mixins.cursor-pointer()
+        @extend %search-box-shared
+        flex-basis: 15%
+        padding-right: 20px
+        border-top-right-radius: variables.$border-radius-size
+        border-bottom-right-radius: variables.$border-radius-size
+        
     
 

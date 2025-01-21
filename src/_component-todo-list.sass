@@ -19,16 +19,16 @@
     padding: 4px 0px
 
 .tab 
+    @include mixins.text-parametrs(500, 14px, 143%)
+    @extend %button-shared
     flex: 1
     background-color: variables.$bg-color-light-white
     border: 1px solid variables.$color-grey-violet
     padding: 10px
     outline: none
-    @include mixins.text-parametrs(500, 14px, 143%)
     letter-spacing: 0.01em
     text-align: center
     color: variables.$tabs-color
-    @extend %button-shared
     &:hover
         @extend %button-hover-shared  
     
@@ -44,8 +44,8 @@
         display: none
 
 .tab.active
-    background-color: variables.$bg-color-grey-light-violet
     @include mixins.flex-direction-centr()
+    background-color: variables.$bg-color-grey-light-violet
     gap: 8px
     &:hover
         @extend %button-hover-shared

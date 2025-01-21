@@ -33,7 +33,7 @@
     right: 0
     opacity: 0
     transform: translateY(50px)
-    transition: 0.5s
+    @include mixins.transition(500ms)
 
 .new-entry.active 
     opacity: 1
@@ -56,12 +56,12 @@
     @include mixins.flex-direction-column-gap-16()
 
     input
+        @include mixins.transition()
         border-radius: 4px
         outline: none
         padding: 16px
         background-color: variables.$bg-color-light-purpur
         border: 1px solid variables.$color-grey-violet
-        @include mixins.transition()
         &:hover
             border: 1px solid variables.$color-dark-grey-violet
             background-color: variables.$bg-color-violet
@@ -75,17 +75,14 @@
     gap: 8px
 
     button
+        @include mixins.cursor-pointer()
+        @include mixins.transition()
+        @include mixins.text-parametrs(500, 14px, 143%)
         padding: 10px 24px
-        font-weight: 500
-        font-size: 14px
-        line-height: 143%
         letter-spacing: 0.01em
         text-align: center
         border-radius: 100px
         outline: none
-        @include mixins.cursor-pointer()
-        @include mixins.transition()
-    
 
     button[type='submit']
         color: variables.$color-white

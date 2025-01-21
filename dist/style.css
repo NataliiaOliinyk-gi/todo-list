@@ -45,6 +45,11 @@ input[type=date]::placeholder {
   color: #49454f;
 }
 
+.search-box button, .search-box input {
+  background-color: rgba(29, 27, 32, 0.08);
+  transition: all 400ms;
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -70,12 +75,6 @@ input[type=date]::placeholder {
   background-color: #e8def8;
   border-radius: 28px;
 }
-
-.search-box button, .search-box input {
-  background-color: rgba(29, 27, 32, 0.08);
-  transition: all 400ms;
-}
-
 .search-box input {
   border: none;
   outline: none;
@@ -84,8 +83,10 @@ input[type=date]::placeholder {
   border-top-left-radius: 28px;
   border-bottom-left-radius: 28px;
 }
-
 .search-box button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border: none;
   outline: none;
   cursor: pointer;
@@ -93,9 +94,6 @@ input[type=date]::placeholder {
   padding-right: 20px;
   border-top-right-radius: 28px;
   border-bottom-right-radius: 28px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .tab {
@@ -120,15 +118,15 @@ input[type=date]::placeholder {
 }
 
 .tab {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+  color: #1d1b1e;
   flex: 1;
   background-color: #fffbff;
   border: 1px solid #79747e;
   padding: 10px;
   outline: none;
-  font-weight: 500;
-  font-size: 14px;
-  line-height: 143%;
-  color: #1d1b1e;
   letter-spacing: 0.01em;
   text-align: center;
   color: #1d192b;
@@ -146,10 +144,10 @@ input[type=date]::placeholder {
 }
 
 .tab.active {
-  background-color: #e8def8;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #e8def8;
   gap: 8px;
 }
 .tab.active span {
@@ -170,10 +168,10 @@ input[type=date]::placeholder {
 }
 
 .tack-list {
-  border-radius: 16px;
-  padding: 8px 8px 8px 16px;
-  background-color: rgba(103, 80, 164, 0.05);
   transition: all 400ms;
+  border-radius: 16px;
+  background-color: rgba(103, 80, 164, 0.05);
+  padding: 8px 8px 8px 16px;
 }
 .tack-list:hover {
   background-color: #e8def8;
@@ -208,14 +206,14 @@ input[type=date]::placeholder {
 }
 
 .add-task-button {
-  border-radius: 16px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
-  background-color: #ebdef7;
-  padding: 19px;
   border: none;
   outline: none;
   transition: all 400ms;
   cursor: pointer;
+  background-color: #ebdef7;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15);
+  padding: 19px;
 }
 .add-task-button:hover {
   background-color: #d0bcff;
@@ -253,7 +251,7 @@ input[type=date]::placeholder {
   right: 0;
   opacity: 0;
   transform: translateY(50px);
-  transition: 0.5s;
+  transition: all 500ms;
 }
 
 .new-entry.active {
@@ -282,12 +280,12 @@ input[type=date]::placeholder {
   gap: 16px;
 }
 .data-entry input {
+  transition: all 400ms;
   border-radius: 4px;
   outline: none;
   padding: 16px;
   background-color: #f7f2fa;
   border: 1px solid #79747e;
-  transition: all 400ms;
 }
 .data-entry input:hover {
   border: 1px solid #6750a4;
@@ -304,16 +302,17 @@ input[type=date]::placeholder {
   gap: 8px;
 }
 .buttons-form button {
-  padding: 10px 24px;
+  cursor: pointer;
+  transition: all 400ms;
   font-weight: 500;
   font-size: 14px;
   line-height: 143%;
+  color: #1d1b1e;
+  padding: 10px 24px;
   letter-spacing: 0.01em;
   text-align: center;
   border-radius: 100px;
   outline: none;
-  cursor: pointer;
-  transition: all 400ms;
 }
 .buttons-form button[type=submit] {
   color: #fff;
@@ -327,8 +326,9 @@ input[type=date]::placeholder {
 }
 .switch {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  justify-content: space-between;
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
@@ -340,16 +340,16 @@ input[type=date]::placeholder {
 }
 
 .slider {
-  position: relative;
-  width: 52px;
-  height: 32px;
-  background-color: #ccc;
-  border-radius: 34px;
   cursor: pointer;
   transition: all 400ms;
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
+  width: 52px;
+  height: 32px;
+  background-color: #ccc;
+  border-radius: 34px;
 }
 .slider:hover {
   background-color: #d0bcff;
