@@ -1,0 +1,21 @@
+// Работа с блоком footer
+
+@use 'variables'
+@use 'mixins'
+
+.footer
+    display: flex
+    justify-content: flex-end
+
+.add-task-button
+    border-radius: variables.$border-radius-task-size
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 4px 8px 3px rgba(0, 0, 0, 0.15)
+    background-color: variables.$bg-color-grey-light-purpur
+    padding: 19px
+    @include mixins.button-none-style()
+    @include mixins.transition()
+    @include mixins.cursor-pointer()
+    &:hover
+        background-color: variables.$bg-color-violet
+   
+

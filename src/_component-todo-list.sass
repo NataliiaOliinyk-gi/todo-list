@@ -1,0 +1,63 @@
+// Работа с блоком todo-list
+    
+@use 'variables'
+@use 'mixins'
+
+%button-shared
+    @include mixins.transition()
+    @include mixins.cursor-pointer()
+
+%button-hover-shared   
+    background-color: variables.$bg-color-violet
+    color: variables.$color-white 
+
+.todo-list
+    @include mixins.flex-direction-column-gap-16()
+
+.tabs 
+    display: flex
+    padding: 4px 0px
+
+.tab 
+    flex: 1
+    background-color: variables.$bg-color-light-white
+    border: 1px solid variables.$color-grey-violet
+    padding: 10px
+    outline: none
+    @include mixins.text-parametrs(500, 14px, 143%)
+    letter-spacing: 0.01em
+    text-align: center
+    color: variables.$tabs-color
+    @extend %button-shared
+    &:hover
+        @extend %button-hover-shared  
+    
+    &:first-child
+        border-radius: 100px 0 0 100px
+        border-right: none
+
+    &:last-child
+        border-radius: 0 100px 100px 0
+        border-left: none
+
+    span
+        display: none
+
+.tab.active
+    background-color: variables.$bg-color-grey-light-violet
+    @include mixins.flex-direction-centr()
+    gap: 8px
+    &:hover
+        @extend %button-hover-shared
+
+    span 
+        display: inline
+
+#titleTodoList
+    display: none
+
+
+        
+
+
+

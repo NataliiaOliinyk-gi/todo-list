@@ -1,0 +1,28 @@
+@use 'variables'
+@use 'mixins'
+
+body
+    @include mixins.flex-direction-centr()
+    height: 100vh
+    
+
+.app-todo 
+    @include mixins.flex-direction-column-gap-16()
+    position: relative
+    /* родительский элемент для модального окна */
+
+    width: 428px
+    background-color: variables.$bg-color-light-white
+    border-radius: 8px
+    padding: 24px 16px 16px 16px
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4)
+
+
+h2
+    @include mixins.text-parametrs(500, 20px, 24.2px)
+
+input[type='text']::placeholder,
+input[type='date']::placeholder
+    @include mixins.text-parametrs(400, 16px, 150%)
+    letter-spacing: 0.03em
+    color: variables.$placeholder-color

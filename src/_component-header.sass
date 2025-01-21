@@ -1,0 +1,46 @@
+// Работа с блоком header
+    
+@use 'variables'
+@use 'mixins'
+
+.header
+    @include mixins.flex-direction-column-gap-16()
+
+.header-info 
+    display: flex
+    flex-direction: column
+    gap: 4px
+
+    p
+        @include mixins.text-parametrs(400, 15px, 18.15px)
+
+.search-box 
+    display: flex
+    &:hover
+        background-color: variables.$bg-color-grey-light-violet
+        border-radius: variables.$border-radius-size
+
+%search-box-shared
+    background-color: variables.$bg-color-search-box
+    @include mixins.transition()
+
+
+.search-box input
+    @include mixins.button-none-style()
+    @extend %search-box-shared
+    flex-basis: 85%
+    padding: 12px 0px 12px 20px
+    border-top-left-radius: variables.$border-radius-size
+    border-bottom-left-radius: variables.$border-radius-size
+
+.search-box button
+    @include mixins.button-none-style()
+    @extend %search-box-shared
+    @include mixins.cursor-pointer()
+    flex-basis: 15%
+    padding-right: 20px
+    border-top-right-radius: variables.$border-radius-size
+    border-bottom-right-radius: variables.$border-radius-size
+    @include mixins.flex-direction-centr()
+    
+

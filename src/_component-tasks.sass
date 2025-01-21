@@ -1,0 +1,37 @@
+// Стили для списка задач
+
+@use 'variables'
+@use 'mixins'
+
+
+#tasks
+    display: flex
+    flex-direction: column
+    gap: 12px
+    // Полоса прокрутки для списка задач
+    height: 380px
+    max-height: 380px
+    overflow-y: auto
+
+.tack-list
+    border-radius: variables.$border-radius-task-size
+    padding: 8px 8px 8px 16px
+    background-color: variables.$bg-color-tack-list
+    @include mixins.transition()
+    &:hover
+        background-color: variables.$bg-color-grey-light-violet
+
+.custom-checkbox
+    display: flex
+    gap: 8px
+
+    input[type="checkbox"] 
+        transform: scale(1.5)
+        &:checked
+            accent-color: variables.$bg-color-violet
+
+.task-data
+     @include mixins.text-data(14px)
+
+.task-description
+     @include mixins.text-data(16px)

@@ -1,0 +1,32 @@
+@use 'variables'
+    
+@mixin flex-direction-column-gap-16()
+    display: flex
+    flex-direction: column
+    gap: 16px
+
+@mixin flex-direction-centr()
+    display: flex
+    justify-content: center
+    align-items: center
+
+@mixin text-parametrs($font-weight, $font-size, $line-height)
+    font-weight: $font-weight
+    font-size: $font-size
+    line-height: $line-height
+    color: variables.$color-dark-purpur
+
+@mixin text-data($font-size)
+    font-weight: 400
+    font-size: $font-size
+    color: variables.$color-dark-purpur
+
+@mixin button-none-style()
+    border: none
+    outline: none
+    
+@mixin transition()
+    transition: all 400ms
+
+@mixin cursor-pointer()
+    cursor: pointer

@@ -1,0 +1,103 @@
+// Работа с модальным окном
+
+@use 'variables'
+@use 'mixins'
+
+%button-hover-shared
+    background-color: variables.$bg-color-violet
+    color: variables.$color-white
+
+
+.modal
+    position: absolute
+    top: 0
+    bottom: 0
+    left: 0
+    right: 0
+    background-color: variables.$bg-color-modal-window
+    opacity: 0
+    visibility: hidden
+    transition: 0.5s
+
+.modal.active 
+    opacity: 1
+    visibility: visible
+
+.new-entry 
+    padding: 0px 16px 16px 16px
+    background-color: variables.$bg-color-light-purpur
+    border-radius: 28px 28px 0 0
+    position: absolute
+    bottom: 0
+    left: 0
+    right: 0
+    opacity: 0
+    transform: translateY(50px)
+    transition: 0.5s
+
+.new-entry.active 
+    opacity: 1
+    transform: translateY(0)
+
+.new-entry hr
+    margin: 16px auto
+    width: 32px
+    height: 4px
+    border-radius: 100px
+    background-color: variables.$color-grey-violet
+    border: none
+
+#addNewEntryForm
+    display: flex
+    flex-direction: column
+    gap: 44px
+
+.data-entry
+    @include mixins.flex-direction-column-gap-16()
+
+    input
+        border-radius: 4px
+        outline: none
+        padding: 16px
+        background-color: variables.$bg-color-light-purpur
+        border: 1px solid variables.$color-grey-violet
+        @include mixins.transition()
+        &:hover
+            border: 1px solid variables.$color-dark-grey-violet
+            background-color: variables.$bg-color-violet
+        &:focus
+            border: 1px solid variables.$color-dark-grey-violet
+            background-color: variables.$bg-color-light-violet
+
+.buttons-form
+    display: flex
+    justify-content: flex-end
+    gap: 8px
+
+    button
+        padding: 10px 24px
+        font-weight: 500
+        font-size: 14px
+        line-height: 143%
+        letter-spacing: 0.01em
+        text-align: center
+        border-radius: 100px
+        outline: none
+        @include mixins.cursor-pointer()
+        @include mixins.transition()
+    
+
+    button[type='submit']
+        color: variables.$color-white
+        background-color: variables.$color-dark-grey-violet
+        border: 1px solid variables.$color-dark-grey-violet
+        &:hover
+            @extend %button-hover-shared
+        
+    button[type='reset'] 
+        color: variables.$color-dark-grey-violet
+        border: 1px solid variables.$color-grey-violet
+        background-color: variables.$bg-color-light-purpur
+        &:hover
+            @extend %button-hover-shared
+       
