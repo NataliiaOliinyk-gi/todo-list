@@ -2,9 +2,11 @@
 
 @use 'variables'
 @use 'mixins'
+// @use 'style'
 
 .switch
     @include mixins.flex-direction-centr()
+    // @extend %flex-direction-centr-shared
     justify-content: space-between
     @include mixins.text-parametrs(400, 16px, 150%)
     letter-spacing: 0.03em
@@ -16,6 +18,8 @@
     @include mixins.cursor-pointer()
     @include mixins.transition()
     @include mixins.flex-direction-centr()
+    // @extend %flex-direction-centr-shared
+    // @extend %cursor-pointer-shared
     position: relative
     width: 52px
     height: 32px
@@ -34,6 +38,8 @@
         border-radius: 50%
         @include mixins.transition()
         @include mixins.flex-direction-centr()
+        // @extend %flex-direction-centr-shared
+
 
     // Иконка галочки
     .checkmark 
