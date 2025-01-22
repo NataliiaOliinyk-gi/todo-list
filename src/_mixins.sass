@@ -30,3 +30,24 @@
 
 @mixin cursor-pointer()
     cursor: pointer
+
+@mixin slider()
+    width: variables.$slider-width
+    height: variables.$slider-height
+    background-color: variables.$bg-color-light-grey
+    border-radius: 34px
+
+@mixin circle-in-slider()
+    height: variables.$circle-height
+    width: variables.$circle-width
+    left: variables.$circle-left
+    bottom: variables.$circle-bottom
+    background-color: variables.$color-white
+    border-radius: 50%
+
+@mixin checkmark-in-slider($transition: 1.2s)
+    height: variables.$checkmark-height
+    width: variables.$checkmark-width
+    stroke: black
+    display: none
+    transition: $transition

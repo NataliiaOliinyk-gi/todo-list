@@ -21,21 +21,13 @@
     // @extend %flex-direction-centr-shared
     // @extend %cursor-pointer-shared
     position: relative
-    width: 52px
-    height: 32px
-    background-color: variables.$bg-color-light-grey
-    border-radius: 34px
+    @include mixins.slider()
     &:hover
         background-color: variables.$bg-color-violet
     &::before     // Круг в середине слайдера
         position: absolute
         content: ""
-        height: 21px
-        width: 21px
-        left: 5px
-        bottom: 5px
-        background-color: variables.$color-white
-        border-radius: 50%
+        @include mixins.circle-in-slider()
         @include mixins.transition()
         @include mixins.flex-direction-centr()
         // @extend %flex-direction-centr-shared
@@ -43,11 +35,7 @@
 
     // Иконка галочки
     .checkmark 
-        height: 18px
-        width: 18px
-        stroke: black
-        display: none
-        transition: 1.2s
+        @include mixins.checkmark-in-slider()
 
 input:checked+.slider 
     background-color: #6a4dcb
